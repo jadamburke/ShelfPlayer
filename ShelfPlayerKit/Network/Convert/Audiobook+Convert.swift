@@ -58,6 +58,7 @@ extension Audiobook {
             authors: media.metadata.authorName?.split(separator: ", ").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) } ?? [],
             description: media.metadata.description?.trimmingCharacters(in: .whitespacesAndNewlines),
             genres: media.metadata.genres,
+            tags: media.tags ?? [],
             addedAt: Date(timeIntervalSince1970: addedAt / 1000),
             released: media.metadata.publishedYear,
             size: payload.size,

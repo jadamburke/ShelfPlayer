@@ -23,7 +23,7 @@ struct TimeRow: View {
             callback()
         } label: {
             HStack(spacing: 0) {
-                ZStack {
+                ZStack (alignment: .topLeading) {
                     Text(verbatim: "00:00:00")
                         .hidden()
                     
@@ -40,7 +40,6 @@ struct TimeRow: View {
                 
                 Spacer(minLength: 0)
             }
-            .lineLimit(1)
             .contentShape(.rect)
         }
         .buttonStyle(.plain)
@@ -51,7 +50,7 @@ struct TimeRow: View {
 #if DEBUG
 #Preview {
     List {
-        TimeRow(title: "Test", time: 300, isActive: false, isFinished: false) {}
+        TimeRow(title: "Test a really long line to see how it gets truncated even if its a really long bit of text that requires many lines of text it looks like its working", time: 300, isActive: false, isFinished: false) {}
         TimeRow(title: "Test", time: 300, isActive: false, isFinished: true) {}
         TimeRow(title: "Test", time: 300, isActive: true, isFinished: false) {}
         TimeRow(title: "Test", time: 300, isActive: true, isFinished: true) {}

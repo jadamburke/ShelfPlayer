@@ -67,6 +67,11 @@ final class LazyLoadHelper<T, O>: Sendable where T: Sendable & Equatable & Ident
             refresh()
         }
     }
+    var filteredTag: String? {
+        didSet {
+            refresh()
+        }
+    }
     
     var searchTask: Task<Void, Error>?
     
@@ -100,6 +105,7 @@ final class LazyLoadHelper<T, O>: Sendable where T: Sendable & Equatable & Ident
         
         search = ""
         filteredGenre = nil
+        filteredTag = nil
         
         failed = false
         notifyError = false
@@ -190,7 +196,8 @@ final class LazyLoadHelper<T, O>: Sendable where T: Sendable & Equatable & Ident
             let page = loadedCount / Self.PAGE_SIZE
             let existingIDs = await items.map(\.id)
             let filteredGenre = await filteredGenre
-            
+            let filteredTag = await filteredTag
+
             do {
                 // MARK: Load
                 
@@ -202,6 +209,8 @@ final class LazyLoadHelper<T, O>: Sendable where T: Sendable & Equatable & Ident
                 if let filteredGenre {
                     // Fuck you, this only needs to happen once, and this code is bloated already
                     (received, totalCount) = try await ABSClient[library.connectionID].audiobooks(from: library.id, filtered: filteredGenre, sortOrder: sortOrder as! AudiobookSortOrder, ascending: ascending, groupSeries: groupAudiobooksInSeries, limit: Self.PAGE_SIZE, page: page) as! ([T], Int)
+                } else if let filteredTag {
+                    (received, totalCount) = try await ABSClient[library.connectionID].audiobooks(from: library.id, filtered: filteredTag, sortOrder: sortOrder as! AudiobookSortOrder, ascending: ascending, groupSeries: groupAudiobooksInSeries, limit: Self.PAGE_SIZE, page: page) as! ([T], Int)
                 } else if let response = try await loadMore(page, filter, sortOrder, ascending, groupAudiobooksInSeries, library) {
                     (received, totalCount) = response
                 } else {
@@ -267,7 +276,7 @@ final class LazyLoadHelper<T, O>: Sendable where T: Sendable & Equatable & Ident
                 // MARK: Local filter & search
                 
                 let filter = await filter
-                let filterLocally = filterLocally || filteredGenre != nil
+                let filterLocally = filterLocally || filteredGenre != nil || filteredTag != nil
                 
                 if await restrictToPersisted {
                     if let items = received as? [PlayableItem] {

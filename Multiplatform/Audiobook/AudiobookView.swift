@@ -31,6 +31,37 @@ struct AudiobookView: View {
                     .padding(.horizontal, 20)
                 
                 divider
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(viewModel.genres, id: \.self) { (genrename) in
+                            NavigationLink(value: NavigationDestination.libraryGenres(genrename)) {
+                                Text(genrename)
+                                    .padding(6)
+                                    .background(Color(red: 0.1, green: 0.1, blue: 0.1))
+                                    .foregroundColor(.white)
+                                    .cornerRadius(8)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                }
+                divider
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(viewModel.tags, id: \.self) { (tagname) in
+                            NavigationLink(value: NavigationDestination.libraryTags(tagname)) {
+                                Text(tagname)
+                                    .padding(6)
+                                    .background(Color(red: 0.1, green: 0.1, blue: 0.1)) 
+                                    .foregroundColor(.white)
+                                    .cornerRadius(8)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                }
+                divider
                 
                 Description(description: viewModel.audiobook.description)
                     .padding(.horizontal, 20)

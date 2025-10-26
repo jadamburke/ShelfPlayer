@@ -43,6 +43,11 @@ struct NavigationStackWrapper<Content: View>: View {
                             
                         case .audiobookRow(let title, let audiobooks):
                             RowGridView(title: title, audiobooks: audiobooks)
+                        case .libraryGenres(let genre):
+                            AudiobookLibraryPanel(filterGenre: genre)
+                        case .libraryTags(let tag):
+                            AudiobookLibraryPanel(filterTag: tag)
+                            
                     }
                 }
                 .onReceive(RFNotification[._navigate].publisher()) {
@@ -98,6 +103,9 @@ enum NavigationDestination: Hashable {
     
     case audiobookRow(String, [Audiobook])
     
+    case libraryGenres(String)
+    case libraryTags(String)
+    
     static func item(_ item: Item) -> Self {
         .item(item, nil)
     }
@@ -128,6 +136,10 @@ enum NavigationDestination: Hashable {
                 tab.label
             case .audiobookRow(let title, _):
                 title
+            case .libraryGenres(let genre):
+                genre
+            case .libraryTags(let tags):
+                tags
         }
     }
 }

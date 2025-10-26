@@ -15,6 +15,7 @@ extension Audiobook {
                   authors: audiobook.authors,
                   description: audiobook.overview,
                   genres: audiobook.genres,
+                  tags: [],
                   addedAt: audiobook.addedAt,
                   released: audiobook.released,
                   size: audiobook.size,

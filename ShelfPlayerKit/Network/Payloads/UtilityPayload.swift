@@ -86,6 +86,7 @@ struct LibraryResponse: Codable {
 }
 struct Filterdata: Codable {
     let genres: [String]
+    let tags: [String]
 }
 
 struct SearchResponse: Codable {

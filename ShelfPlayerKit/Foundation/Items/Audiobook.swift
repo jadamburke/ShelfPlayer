@@ -16,7 +16,7 @@ public final class Audiobook: PlayableItem, @unchecked Sendable {
     public let explicit: Bool
     public let abridged: Bool
     
-    public init(id: ItemIdentifier, name: String, authors: [String], description: String?, genres: [String], addedAt: Date, released: String?, size: Int64?, duration: TimeInterval, subtitle: String?, narrators: [String], series: [SeriesFragment], explicit: Bool, abridged: Bool) {
+    public init(id: ItemIdentifier, name: String, authors: [String], description: String?, genres: [String], tags: [String], addedAt: Date, released: String?, size: Int64?, duration: TimeInterval, subtitle: String?, narrators: [String], series: [SeriesFragment], explicit: Bool, abridged: Bool) {
         self.subtitle = subtitle
         
         self.narrators = narrators
@@ -24,8 +24,8 @@ public final class Audiobook: PlayableItem, @unchecked Sendable {
         
         self.explicit = explicit
         self.abridged = abridged
-        
-        super.init(id: id, name: name, authors: authors, description: description, genres: genres, addedAt: addedAt, released: released, size: size, duration: duration)
+
+        super.init(id: id, name: name, authors: authors, description: description, genres: genres, tags: tags, addedAt: addedAt, released: released, size: size, duration: duration)
     }
     
     required init(from decoder: Decoder) throws {

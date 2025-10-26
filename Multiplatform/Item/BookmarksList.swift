@@ -43,7 +43,8 @@ struct BookmarksList: View {
 #Preview {
     List {
         BookmarksList(itemID: .fixture, bookmarks: [
-            Bookmark(itemID: .fixture, time: 300, note: "Test", created: .now),
+            Bookmark(itemID: .fixture, time: 300, note: "Test a long line of code that is insanely long and ends up wrapping", created: .now),
+        Bookmark(itemID: .fixture, time: 300, note: "Test a long line of code that is insanely long and ends up wrapping", created: .now),
         ])
     }
     .listStyle(.plain)

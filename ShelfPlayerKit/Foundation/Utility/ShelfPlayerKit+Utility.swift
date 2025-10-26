@@ -12,7 +12,7 @@ import UIKit
 #endif
 
 public extension ShelfPlayerKit {
-    static let groupContainer = "group.io.rfk.shelfplayer"
+    static let groupContainer = "group.com.jadamburke.shelfplayer"
     
     static nonisolated(unsafe) var enableCentralized = true
     

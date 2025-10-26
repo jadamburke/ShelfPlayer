@@ -9,6 +9,15 @@ import SwiftUI
 import ShelfPlayback
 
 struct AudiobookLibraryPanel: View {
+
+    let filterGenre: String?
+    let filterTag: String?
+
+    init(filterGenre: String? = nil, filterTag: String? = nil) {
+        self.filterGenre = filterGenre
+        self.filterTag = filterTag
+    }
+
     @Environment(\.library) private var library
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.defaultMinListRowHeight) private var defaultMinListRowHeight
@@ -114,7 +123,7 @@ struct AudiobookLibraryPanel: View {
                 if let genres = viewModel.genres, !genres.isEmpty {
                     Menu("item.genres", systemImage: "tag") {
                         ForEach(genres.sorted(by: <), id: \.hashValue) {
-                            Toggle($0, isOn: viewModel.binding(for: $0))
+                            Toggle($0, isOn: viewModel.genreBinding(for: $0))
                         }
                     }
                     .labelStyle(.iconOnly)
@@ -122,7 +131,19 @@ struct AudiobookLibraryPanel: View {
                 } else if viewModel.genres == nil {
                     ProgressView()
                 }
-                
+
+                if let tags = viewModel.tags, !tags.isEmpty {
+                    Menu("item.tags", systemImage: "tag.fill") {
+                        ForEach(tags.sorted(by: <), id: \.hashValue) {
+                            Toggle($0, isOn: viewModel.tagBinding(for: $0))
+                        }
+                    }
+                    .labelStyle(.iconOnly)
+                    .symbolVariant(viewModel.lazyLoader.filteredTag != nil ? .fill : .none)
+                } else if viewModel.tags == nil {
+                    ProgressView()
+                }
+
                 Menu("item.options", systemImage: viewModel.filter != .all ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle") {
                     ItemDisplayTypePicker(displayType: $viewModel.displayType)
                     
@@ -166,6 +187,14 @@ struct AudiobookLibraryPanel: View {
         }
         .onAppear {
             viewModel.library = library
+            if let filterGenre {
+                viewModel.filteredGenre = filterGenre
+                viewModel.preFilterGenre()
+            }
+            if let filterTag {
+                viewModel.filteredTags = filterTag
+                viewModel.preFilterTag()
+            }
             viewModel.lazyLoader.initialLoad()
         }
         .onReceive(RFNotification[.invalidateTabs].publisher()) {
@@ -190,11 +219,17 @@ private final class LibraryViewModel {
     @ObservableDefault(.audiobooksAscending) @ObservationIgnored
     var ascending: Bool
     
+    var filteredGenre = ""
+    var filteredTags = ""
+    
     var tabs = [TabValue]()
     
     private(set) var genres: [String]? = nil
     var isGenreFilterPresented = false
-    
+
+    private(set) var tags: [String]? = nil
+    var isTagFilterPresented = false
+        
     let lazyLoader = LazyLoadHelper<Audiobook, AudiobookSortOrder>.audiobooks
     
     var library: Library! {
@@ -217,12 +252,14 @@ private final class LibraryViewModel {
     nonisolated func load() {
         loadTabs()
         loadGenres()
+        loadTags()
     }
     nonisolated func refresh() {
         lazyLoader.refresh()
         
         loadTabs()
         loadGenres()
+        loadTags()
     }
     
     nonisolated func loadTabs() {
@@ -239,7 +276,7 @@ private final class LibraryViewModel {
 // MARK: Genres
 
 extension LibraryViewModel {
-    func binding(for genre: String) -> Binding<Bool> {
+    func genreBinding(for genre: String) -> Binding<Bool> {
         .init { self.lazyLoader.filteredGenre == genre } set: {
             if $0 {
                 self.lazyLoader.filteredGenre = genre
@@ -248,7 +285,29 @@ extension LibraryViewModel {
             }
         }
     }
-    
+
+    func tagBinding(for tag: String) -> Binding<Bool> {
+        .init { self.lazyLoader.filteredTag == tag } set: {
+            if $0 {
+                self.lazyLoader.filteredTag = tag
+            } else {
+                self.lazyLoader.filteredTag = nil
+            }
+        }
+    }
+
+    func preFilterGenre(){
+        if (self.filteredGenre != ""){
+            self.lazyLoader.filteredGenre = self.filteredGenre
+        }
+    }
+
+    func preFilterTag(){
+        if (self.filteredTags != ""){
+            self.lazyLoader.filteredTag = self.filteredTags
+        }
+    }
+
     private nonisolated func loadGenres() {
         Task {
             guard let library = await library else {
@@ -265,6 +324,27 @@ extension LibraryViewModel {
                 await MainActor.withAnimation {
                     notifyError.toggle()
                     genres = []
+                }
+            }
+        }
+    }
+
+    private nonisolated func loadTags() {
+        Task {
+            guard let library = await library else {
+                return
+            }
+
+            do {
+                let tags = try await ABSClient[library.connectionID].tags(from: library.id)
+
+                await MainActor.withAnimation {
+                    self.tags = tags
+                }
+            } catch {
+                await MainActor.withAnimation {
+                    notifyError.toggle()
+                    tags = []
                 }
             }
         }

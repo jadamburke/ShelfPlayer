@@ -37,6 +37,8 @@ final class AudiobookViewModel: Sendable {
     private(set) var loadingPDF: Bool
     
     private(set) var bookmarks: [Bookmark]
+    private(set) var genres: [String]
+    private(set) var tags: [String]
     
     let sessionLoader: SessionLoader
     
@@ -65,7 +67,9 @@ final class AudiobookViewModel: Sendable {
         loadingPDF = false
         
         bookmarks = []
-        
+        genres = []
+        tags = []
+
         sessionLoader = .init(filter: .itemID(audiobook.id))
         
         notifyError = false
@@ -84,6 +88,8 @@ extension AudiobookViewModel {
                 $0.addTask { await self.loadNarrators() }
                 
                 $0.addTask { await self.loadBookmarks() }
+                $0.addTask { await self.loadGenres() }
+                $0.addTask { await self.loadTags() }
                 
                 if refresh {
                     $0.addTask { await self.sessionLoader.refresh() }
@@ -268,6 +274,36 @@ private extension AudiobookViewModel {
         
         await MainActor.withAnimation {
             self.bookmarks = bookmarks
+        }
+    }
+    nonisolated func loadGenres() async {
+        
+        let audiobook = await audiobook
+        guard let genres = try? await audiobook.genres else {
+        await MainActor.run {
+                notifyError.toggle()
+            }
+            
+            return
+        }
+        
+        await MainActor.withAnimation {
+            self.genres = genres
+        }
+    }
+    nonisolated func loadTags() async {
+        
+        let audiobook = await audiobook
+        guard let tags = try? await audiobook.tags else {
+        await MainActor.run {
+                notifyError.toggle()
+            }
+            
+            return
+        }
+        
+        await MainActor.withAnimation {
+            self.tags = tags
         }
     }
 }

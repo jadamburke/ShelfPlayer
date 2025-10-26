@@ -19,4 +19,11 @@ public extension APIClient {
         ])
         return response.filterdata.genres
     }
+
+    func tags(from libraryID: ItemIdentifier.LibraryID) async throws -> [String] {
+        let response: LibraryResponse = try await response(path: "api/libraries/\(libraryID)", method: .get, query: [
+            .init(name: "include", value: "filterdata")
+        ])
+        return response.filterdata.tags
+    }
 }

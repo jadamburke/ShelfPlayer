@@ -19,11 +19,12 @@ public class Item: Identifiable, @unchecked Sendable, Codable {
     public let description: String?
     
     public let genres: [String]
-    
+    public let tags: [String]
+
     public let addedAt: Date
     public let released: String?
-    
-    init(id: ItemIdentifier, name: String, authors: [String], description: String?, genres: [String], addedAt: Date, released: String?) {
+
+    init(id: ItemIdentifier, name: String, authors: [String], description: String?, genres: [String], tags: [String] = [], addedAt: Date, released: String?) {
         self.id = id
         
         self.name = name
@@ -32,7 +33,8 @@ public class Item: Identifiable, @unchecked Sendable, Codable {
         self.description = description
         
         self.genres = genres
-        
+        self.tags = tags
+
         self.addedAt = addedAt
         self.released = released
     }
@@ -43,6 +45,7 @@ public class Item: Identifiable, @unchecked Sendable, Codable {
         case authors
         case description
         case genres
+        case tags
         case addedAt
         case released
     }
