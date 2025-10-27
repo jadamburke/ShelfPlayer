@@ -46,7 +46,7 @@ final class AudiobookViewModel: Sendable {
     private(set) var notifySuccess: Bool
     
     init(_ audiobook: Audiobook) {
-        logger = Logger(subsystem: "io.rfk.shelfPlayer", category: "AudiobookViewModel")
+        logger = Logger(subsystem: "com.jadamburke.shelfPlayer", category: "AudiobookViewModel")
         signposter = OSSignposter(logger: logger)
         
         self.audiobook = audiobook

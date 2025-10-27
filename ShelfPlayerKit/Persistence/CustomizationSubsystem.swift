@@ -10,7 +10,7 @@ import OSLog
 
 extension PersistenceManager {
     public final class CustomizationSubsystem: Sendable {
-        let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "CustomizationSubsystem")
+        let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "CustomizationSubsystem")
     }
 }
 

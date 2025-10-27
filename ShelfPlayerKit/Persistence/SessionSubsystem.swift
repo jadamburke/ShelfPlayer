@@ -15,7 +15,7 @@ typealias PersistedPlaybackSession = SchemaV2.PersistedPlaybackSession
 extension PersistenceManager {
     @ModelActor
     public final actor SessionSubsystem {
-        let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "SessionSubsystem")
+        let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "SessionSubsystem")
         
         subscript(sessionID: UUID) -> PersistedPlaybackSession? {
             get throws {

@@ -8,7 +8,7 @@
 import Foundation
 import OSLog
 
-private let logger = Logger(subsystem: "io.rfk.ShelfPlayerKit", category: "PlayableItem+Convert")
+private let logger = Logger(subsystem: "com.jadamburke.ShelfPlayerKit", category: "PlayableItem+Convert")
 
 extension Chapter {
     init(payload: ChapterPayload) {

@@ -17,15 +17,15 @@ extension Defaults.Keys {
 }
 
 extension RFNotification.IsolatedNotification {
-    static var setGlobalSearch: IsolatedNotification<(String, SearchViewModel.SearchScope)> { .init("io.rfk.shelfPlayer.setGlobalSearch") }
+    static var setGlobalSearch: IsolatedNotification<(String, SearchViewModel.SearchScope)> { .init("com.jadamburke.shelfPlayer.setGlobalSearch") }
     
-    static var navigateConditionMet: IsolatedNotification<RFNotificationEmptyPayload> { .init("io.rfk.shelfPlayer.navigate.notify") }
-    static var _navigate: IsolatedNotification<ItemIdentifier> { .init("io.rfk.shelfPlayer.navigate.two") }
+    static var navigateConditionMet: IsolatedNotification<RFNotificationEmptyPayload> { .init("com.jadamburke.shelfPlayer.navigate.notify") }
+    static var _navigate: IsolatedNotification<ItemIdentifier> { .init("com.jadamburke.shelfPlayer.navigate.two") }
     
-    static var changeLibrary: IsolatedNotification<Library> { .init("io.rfk.shelfPlayer.changeLibrary") }
-    static var performBackgroundSessionSync: IsolatedNotification<ItemIdentifier.ConnectionID?> { .init("io.rfk.shelfPlayer.performBackgroundSessionSync") }
+    static var changeLibrary: IsolatedNotification<Library> { .init("com.jadamburke.shelfPlayer.changeLibrary") }
+    static var performBackgroundSessionSync: IsolatedNotification<ItemIdentifier.ConnectionID?> { .init("com.jadamburke.shelfPlayer.performBackgroundSessionSync") }
     
-    static var scenePhaseDidChange: IsolatedNotification<Bool> { .init("io.rfk.shelfPlayer.scenePhaseDidChange") }
+    static var scenePhaseDidChange: IsolatedNotification<Bool> { .init("com.jadamburke.shelfPlayer.scenePhaseDidChange") }
     
-    static var presentSheet: IsolatedNotification<Satellite.Sheet> { .init("io.rfk.shelfPlayer.presentSheet") }
+    static var presentSheet: IsolatedNotification<Satellite.Sheet> { .init("com.jadamburke.shelfPlayer.presentSheet") }
 }

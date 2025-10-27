@@ -12,7 +12,7 @@ import ShelfPlayback
 
 @MainActor
 public final class CarPlayDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
-    static let logger = Logger(subsystem: "io.rfk.shelfPlayer", category: "CarPlay")
+    static let logger = Logger(subsystem: "com.jadamburke.shelfPlayer", category: "CarPlay")
     
     private var interfaceController: CPInterfaceController?
     private var controller: CarPlayController?

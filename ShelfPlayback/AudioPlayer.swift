@@ -13,7 +13,7 @@ import RFNotifications
 import ShelfPlayerKit
 
 public final actor AudioPlayer: Sendable {
-    let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "AudioPlayer")
+    let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "AudioPlayer")
     
     var current: (any AudioEndpoint)?
     

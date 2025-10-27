@@ -17,13 +17,13 @@ typealias DiscoveredConnection = SchemaV2.PersistedDiscoveredConnection
 extension PersistenceManager {
     @ModelActor
     public final actor AuthorizationSubsystem: Sendable {
-        private let connectionService = "io.rfk.shelfPlayer.credentials.v2" as CFString
-        private let tlsCertificateService = "io.rfk.shelfPlayer.credentials.tlsCertificate.v2" as CFString
+        private let connectionService = "com.jadamburke.shelfPlayer.credentials.v2" as CFString
+        private let tlsCertificateService = "com.jadamburke.shelfPlayer.credentials.tlsCertificate.v2" as CFString
         
-        private let accessTokenService = "io.rfk.shelfPlayer.credentials.accessToken.v2" as CFString
-        private let refreshTokenService = "io.rfk.shelfPlayer.credentials.refreshToken.v2" as CFString
+        private let accessTokenService = "com.jadamburke.shelfPlayer.credentials.accessToken.v2" as CFString
+        private let refreshTokenService = "com.jadamburke.shelfPlayer.credentials.refreshToken.v2" as CFString
         
-        private let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "Authorization")
+        private let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "Authorization")
         
         public private(set) var connectionIDs = [ItemIdentifier.ConnectionID]()
         // Don't store refresh tokens in RAM unless necessary

@@ -26,7 +26,7 @@ extension PersistenceManager {
             self.modelExecutor = DefaultSerialModelExecutor(modelContext: modelContext)
             self.modelContainer = modelContainer
             
-            logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "Progress")
+            logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "Progress")
             signposter = .init(logger: logger)
         }
     }

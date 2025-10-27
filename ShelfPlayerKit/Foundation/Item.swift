@@ -124,7 +124,7 @@ extension Item: Transferable {
         }
         
         ProxyRepresentation(exporting: \.transferableDescription)
-        CodableRepresentation(contentType: .init(exportedAs: "io.rfk.shelfPlayer.item"))
+        CodableRepresentation(contentType: .init(exportedAs: "com.jadamburke.shelfPlayer.item"))
     }
 }
 

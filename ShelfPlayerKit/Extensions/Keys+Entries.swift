@@ -194,102 +194,102 @@ public struct OpenPlaybackSessionPayload: Identifiable, Codable, Defaults.Serial
 // MARK: Notifications
 
 public extension RFNotification.NonIsolatedNotification {
-    static var shake: NonIsolatedNotification<TimeInterval> { .init("io.rfk.shelfPlayer.shake") }
-    static var finalizePlaybackReporting: NonIsolatedNotification<RFNotificationEmptyPayload> { .init("io.rfk.shelfPlayerKit.finalizePlaybackReporting") }
+    static var shake: NonIsolatedNotification<TimeInterval> { .init("com.jadamburke.shelfPlayer.shake") }
+    static var finalizePlaybackReporting: NonIsolatedNotification<RFNotificationEmptyPayload> { .init("com.jadamburke.shelfPlayerKit.finalizePlaybackReporting") }
 }
 
 public extension RFNotification.IsolatedNotification {
     // MARK: Authorization
     
     static var accessTokenExpired: IsolatedNotification<ItemIdentifier.ConnectionID> {
-        .init("io.rfk.shelfPlayerKit.accessTokenExpired")
+        .init("com.jadamburke.shelfPlayerKit.accessTokenExpired")
     }
     static var connectionUnauthorized: IsolatedNotification<ItemIdentifier.ConnectionID> {
-        .init("io.rfk.shelfPlayerKit.connectionUnauthorized")
+        .init("com.jadamburke.shelfPlayerKit.connectionUnauthorized")
     }
     
     static var connectionsChanged: IsolatedNotification<RFNotificationEmptyPayload> {
-        .init("io.rfk.shelfPlayerKit.connectionsChanged")
+        .init("com.jadamburke.shelfPlayerKit.connectionsChanged")
     }
     static var removeConnection: IsolatedNotification<ItemIdentifier.ConnectionID> {
-        .init("io.rfk.shelfPlayerKit.removeConnection")
+        .init("com.jadamburke.shelfPlayerKit.removeConnection")
     }
     
     // MARK: Progress
     
     static var progressEntityUpdated: IsolatedNotification<(connectionID: String, primaryID: String, groupingID: String?, ProgressEntity?)> {
-        .init("io.rfk.shelfPlayerKit.progressEntity.updated")
+        .init("com.jadamburke.shelfPlayerKit.progressEntity.updated")
     }
     static var invalidateProgressEntities: IsolatedNotification<String?> {
-        .init("io.rfk.shelfPlayerKit.progressEntity.invalidate")
+        .init("com.jadamburke.shelfPlayerKit.progressEntity.invalidate")
     }
     
     // MARK: Download
     
     static var downloadStatusChanged: IsolatedNotification<(itemID: ItemIdentifier, status: DownloadStatus)?> {
-        .init("io.rfk.shelfPlayerKit.downloadStatus.updated")
+        .init("com.jadamburke.shelfPlayerKit.downloadStatus.updated")
     }
     static func downloadProgressChanged(_ itemID: ItemIdentifier) -> IsolatedNotification<(assetID: UUID, weight: Percentage, bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64)> {
-        .init("io.rfk.shelfPlayerKit.progress.updated_\(itemID.description)")
+        .init("com.jadamburke.shelfPlayerKit.progress.updated_\(itemID.description)")
     }
     
     static var convenienceDownloadIteration: IsolatedNotification<RFNotificationEmptyPayload> {
-        .init("io.rfk.shelfPlayerKit.convenienceDownloadIteration")
+        .init("com.jadamburke.shelfPlayerKit.convenienceDownloadIteration")
     }
     static var convenienceDownloadConfigurationsChanged: IsolatedNotification<RFNotificationEmptyPayload> {
-        .init("io.rfk.shelfPlayerKit.convenienceDownloadConfigurationsChanged")
+        .init("com.jadamburke.shelfPlayerKit.convenienceDownloadConfigurationsChanged")
     }
     
     // MARK: Bookmarks
     
     static var bookmarksChanged: IsolatedNotification<ItemIdentifier> {
-        .init("io.rfk.shelfPlayerKit.bookmarksChanged")
+        .init("com.jadamburke.shelfPlayerKit.bookmarksChanged")
     }
     
     // MARK: Playback
     
-    static var playbackItemChanged: IsolatedNotification<(ItemIdentifier, [Chapter], TimeInterval)> { .init("io.rfk.shelfPlayerKit.playbackItemChanged") }
-    static var playStateChanged: IsolatedNotification<(Bool)> { .init("io.rfk.shelfPlayerKit.playStateChanged") }
+    static var playbackItemChanged: IsolatedNotification<(ItemIdentifier, [Chapter], TimeInterval)> { .init("com.jadamburke.shelfPlayerKit.playbackItemChanged") }
+    static var playStateChanged: IsolatedNotification<(Bool)> { .init("com.jadamburke.shelfPlayerKit.playStateChanged") }
     
-    static var skipped: IsolatedNotification<(Bool)> { .init("io.rfk.shelfPlayerKit.skipped") }
+    static var skipped: IsolatedNotification<(Bool)> { .init("com.jadamburke.shelfPlayerKit.skipped") }
     
-    static var bufferHealthChanged: IsolatedNotification<(Bool)> { .init("io.rfk.shelfPlayerKit.bufferHealthChanged") }
+    static var bufferHealthChanged: IsolatedNotification<(Bool)> { .init("com.jadamburke.shelfPlayerKit.bufferHealthChanged") }
     
-    static var durationsChanged: IsolatedNotification<(itemDuration: TimeInterval?, chapterDuration: TimeInterval?)> { .init("io.rfk.shelfPlayerKit.durationsChanged") }
-    static var currentTimesChanged: IsolatedNotification<(itemDuration: TimeInterval?, chapterDuration: TimeInterval?)> { .init("io.rfk.shelfPlayerKit.currentTimesChanged") }
+    static var durationsChanged: IsolatedNotification<(itemDuration: TimeInterval?, chapterDuration: TimeInterval?)> { .init("com.jadamburke.shelfPlayerKit.durationsChanged") }
+    static var currentTimesChanged: IsolatedNotification<(itemDuration: TimeInterval?, chapterDuration: TimeInterval?)> { .init("com.jadamburke.shelfPlayerKit.currentTimesChanged") }
     
-    static var chapterChanged: IsolatedNotification<Chapter?> { .init("io.rfk.shelfPlayerKit.chapterChanged") }
+    static var chapterChanged: IsolatedNotification<Chapter?> { .init("com.jadamburke.shelfPlayerKit.chapterChanged") }
     
-    static var volumeChanged: IsolatedNotification<Percentage> { .init("io.rfk.shelfPlayerKit.volumeChanged") }
-    static var playbackRateChanged: IsolatedNotification<Percentage> { .init("io.rfk.shelfPlayerKit.playbackRateChanged") }
+    static var volumeChanged: IsolatedNotification<Percentage> { .init("com.jadamburke.shelfPlayerKit.volumeChanged") }
+    static var playbackRateChanged: IsolatedNotification<Percentage> { .init("com.jadamburke.shelfPlayerKit.playbackRateChanged") }
     
-    static var queueChanged: IsolatedNotification<[ItemIdentifier]> { .init("io.rfk.shelfPlayerKit.queueChanged") }
-    static var upNextQueueChanged: IsolatedNotification<[ItemIdentifier]> { .init("io.rfk.shelfPlayerKit.upNextQueueChanged") }
-    static var upNextStrategyChanged: IsolatedNotification<ResolvedUpNextStrategy?> { .init("io.rfk.shelfPlayerKit.upNextStrategyChanged") }
+    static var queueChanged: IsolatedNotification<[ItemIdentifier]> { .init("com.jadamburke.shelfPlayerKit.queueChanged") }
+    static var upNextQueueChanged: IsolatedNotification<[ItemIdentifier]> { .init("com.jadamburke.shelfPlayerKit.upNextQueueChanged") }
+    static var upNextStrategyChanged: IsolatedNotification<ResolvedUpNextStrategy?> { .init("com.jadamburke.shelfPlayerKit.upNextStrategyChanged") }
     
-    static var playbackStopped: IsolatedNotification<RFNotificationEmptyPayload> { .init("io.rfk.shelfPlayerKit.playbackStopped") }
+    static var playbackStopped: IsolatedNotification<RFNotificationEmptyPayload> { .init("com.jadamburke.shelfPlayerKit.playbackStopped") }
     
     // MARK: Utility
     
-    static var navigate: IsolatedNotification<ItemIdentifier> { .init("io.rfk.shelfPlayer.navigate.one") }
+    static var navigate: IsolatedNotification<ItemIdentifier> { .init("com.jadamburke.shelfPlayer.navigate.one") }
     
-    static var reloadImages: IsolatedNotification<ItemIdentifier?> { .init("io.rfk.shelfPlayer.reloadImages") }
-    static var listenNowItemsChanged: IsolatedNotification<RFNotificationEmptyPayload> { .init("io.rfk.shelfPlayerKit.listenNowItemsChanged") }
-    static var synchronizedPlaybackSessions: IsolatedNotification<RFNotificationEmptyPayload> { .init("io.rfk.shelfPlayerKit.synchronizedPlaybackSessions") }
+    static var reloadImages: IsolatedNotification<ItemIdentifier?> { .init("com.jadamburke.shelfPlayer.reloadImages") }
+    static var listenNowItemsChanged: IsolatedNotification<RFNotificationEmptyPayload> { .init("com.jadamburke.shelfPlayerKit.listenNowItemsChanged") }
+    static var synchronizedPlaybackSessions: IsolatedNotification<RFNotificationEmptyPayload> { .init("com.jadamburke.shelfPlayerKit.synchronizedPlaybackSessions") }
     
-    static var invalidateTabs: IsolatedNotification<RFNotificationEmptyPayload> { .init("io.rfk.shelfPlayerKit.invalidateTabs") }
-    static var toggleCustomTabsActive: IsolatedNotification<RFNotificationEmptyPayload> { .init("io.rfk.shelfPlayerKit.toggleCustomTabsActive") }
+    static var invalidateTabs: IsolatedNotification<RFNotificationEmptyPayload> { .init("com.jadamburke.shelfPlayerKit.invalidateTabs") }
+    static var toggleCustomTabsActive: IsolatedNotification<RFNotificationEmptyPayload> { .init("com.jadamburke.shelfPlayerKit.toggleCustomTabsActive") }
     
     // Sessions
     
-    static var timeSpendListeningChanged: IsolatedNotification<Int> { .init("io.rfk.shelfPlayerKit.timeSpendListeningChanged") }
-    static var cachedTimeSpendListeningChanged: IsolatedNotification<RFNotificationEmptyPayload> { .init("io.rfk.shelfPlayerKit.cachedTimeSpendListeningChanged") }
+    static var timeSpendListeningChanged: IsolatedNotification<Int> { .init("com.jadamburke.shelfPlayerKit.timeSpendListeningChanged") }
+    static var cachedTimeSpendListeningChanged: IsolatedNotification<RFNotificationEmptyPayload> { .init("com.jadamburke.shelfPlayerKit.cachedTimeSpendListeningChanged") }
     
-    static var changeOfflineMode: IsolatedNotification<Bool> { .init("io.rfk.shelfPlayer.changeOfflineMode") }
+    static var changeOfflineMode: IsolatedNotification<Bool> { .init("com.jadamburke.shelfPlayer.changeOfflineMode") }
     
     // MARK: Collections
     
-    static var collectionChanged: IsolatedNotification<ItemIdentifier> { .init("io.rfk.shelfPlayerKit.collectionChanged") }
-    static var collectionDeleted: IsolatedNotification<ItemIdentifier> { .init("io.rfk.shelfPlayerKit.collectionDeleted") }
+    static var collectionChanged: IsolatedNotification<ItemIdentifier> { .init("com.jadamburke.shelfPlayerKit.collectionChanged") }
+    static var collectionDeleted: IsolatedNotification<ItemIdentifier> { .init("com.jadamburke.shelfPlayerKit.collectionDeleted") }
 }
 

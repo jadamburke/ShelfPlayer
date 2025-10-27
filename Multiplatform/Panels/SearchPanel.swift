@@ -86,7 +86,7 @@ struct SearchPanelModifier: ViewModifier {
 
 @MainActor @Observable
 final class SearchViewModel {
-    let logger = Logger(subsystem: "io.rfk.shelfPlayer", category: "SearchPanel")
+    let logger = Logger(subsystem: "com.jadamburke.shelfPlayer", category: "SearchPanel")
     
     var search = "" {
         didSet {

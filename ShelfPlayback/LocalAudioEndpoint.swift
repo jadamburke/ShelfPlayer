@@ -16,7 +16,7 @@ import ShelfPlayerKit
 final class LocalAudioEndpoint: AudioEndpoint {
     nonisolated let id = UUID()
     
-    private let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "LocalAudioEndpoint")
+    private let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "LocalAudioEndpoint")
     
     private let audioPlayer: AVQueuePlayer
     

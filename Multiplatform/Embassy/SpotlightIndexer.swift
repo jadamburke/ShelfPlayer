@@ -13,9 +13,9 @@ import OSLog
 import ShelfPlayback
 
 final actor SpotlightIndexer: Sendable {
-    static let BACKGROUND_TASK_IDENTIFIER = "io.rfk.shelfPlayer.spotlightIndex"
+    static let BACKGROUND_TASK_IDENTIFIER = "com.jadamburke.shelfPlayer.spotlightIndex"
     
-    let logger = Logger(subsystem: "io.rfk.ShelfPlayer", category: "SpotlightIndexer")
+    let logger = Logger(subsystem: "com.jadamburkeShelfPlayer", category: "SpotlightIndexer")
     
     private(set) var isRunning = false
     private nonisolated(unsafe) var shouldComeToEnd = false

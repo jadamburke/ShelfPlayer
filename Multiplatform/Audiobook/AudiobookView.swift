@@ -147,7 +147,7 @@ struct AudiobookView: View {
         .refreshable {
             viewModel.load(refresh: true)
         }
-        .userActivity("io.rfk.shelfPlayer.item") { activity in
+        .userActivity("com.jadamburke.shelfPlayer.item") { activity in
             activity.title = viewModel.audiobook.name
             activity.isEligibleForHandoff = true
             activity.isEligibleForPrediction = true

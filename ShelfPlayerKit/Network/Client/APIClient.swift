@@ -28,7 +28,7 @@ public final class APIClient: Sendable {
     private var isRefreshingAccessToken = false
     
     public init(connectionID: ItemIdentifier.ConnectionID, credentialProvider: APICredentialProvider) async throws {
-        logger = .init(subsystem: "io.rfk.shelfPlayerKit", category: "APIClient::\(connectionID)")
+        logger = .init(subsystem: "com.jadamburke.shelfPlayerKit", category: "APIClient::\(connectionID)")
         
         self.connectionID = connectionID
         

@@ -11,7 +11,7 @@ import ShelfPlayerKit
 
 struct StartWidget: Widget {
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: "io.rfk.shelfPlayer.start", intent: StartWidgetConfiguration.self, provider: StartTimelineProvider()) {
+        AppIntentConfiguration(kind: "com.jadamburke.shelfPlayer.start", intent: StartWidgetConfiguration.self, provider: StartTimelineProvider()) {
             StartWidgetContent(entry: $0)
         }
         .configurationDisplayName(Text("widget.start"))

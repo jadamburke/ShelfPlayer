@@ -12,7 +12,7 @@ import ShelfPlayback
 
 @Observable @MainActor
 final class Satellite {
-    let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "Satellite")
+    let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "Satellite")
     
     // MARK: Navigation
     

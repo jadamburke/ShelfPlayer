@@ -18,9 +18,9 @@ private let ASSOCIATED_KEY_VALUE_CLUSTER = "associatedConfigurationIDs"
 
 extension PersistenceManager {
     public final actor ConvenienceDownloadSubsystem {
-        public static let BACKGROUND_TASK_IDENTIFIER = "io.rfk.shelfPlayer.convenienceDownload"
+        public static let BACKGROUND_TASK_IDENTIFIER = "com.jadamburke.shelfPlayer.convenienceDownload"
         
-        let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "ConvenienceDownloadSubsystem")
+        let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "ConvenienceDownloadSubsystem")
         
         var task: Task<Void, Never>?
         var pendingConfigurationIDs = Set<String>()

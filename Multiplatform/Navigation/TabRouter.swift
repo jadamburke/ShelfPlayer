@@ -18,7 +18,7 @@ struct TabRouter: View {
     
     @State private var navigateToWhenReady: ItemIdentifier? = nil
     
-    @AppStorage("io.rfk.shelfPlayer.tabCustomization")
+    @AppStorage("com.jadamburke.shelfPlayer.tabCustomization")
     private var customization: TabViewCustomization
     
     @Default(.customTabValues) private var customTabValues

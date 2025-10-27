@@ -18,7 +18,7 @@ import UIKit
 #endif
 
 final class EmbassyManager: Sendable {
-    let logger = Logger(subsystem: "io.rfk.shelfPlayer", category: "EmbassyManager")
+    let logger = Logger(subsystem: "com.jadamburke.shelfPlayer", category: "EmbassyManager")
     
     // Mutex and async do not like each other, which is bad if you need to call `await activity.update()`
     @MainActor private var isUpdatingActivity = false
@@ -172,12 +172,12 @@ final class EmbassyManager: Sendable {
         
         RFNotification[.timeSpendListeningChanged].subscribe { minutes in
             Defaults[.listenedTodayWidgetValue] = ListenedTodayPayload(total: minutes, updated: .now)
-            WidgetCenter.shared.reloadTimelines(ofKind: "io.rfk.shelfPlayer.listenedToday")
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.jadamburke.shelfPlayer.listenedToday")
         }
         
         Task {
             for await _ in Defaults.updates(.listenTimeTarget, initial: false) {
-                WidgetCenter.shared.reloadTimelines(ofKind: "io.rfk.shelfPlayer.listenedToday")
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.jadamburke.shelfPlayer.listenedToday")
             }
         }
         
@@ -248,8 +248,8 @@ final class EmbassyManager: Sendable {
                 let current = Defaults[.playbackInfoWidgetValue]
                 Defaults[.playbackInfoWidgetValue] = await .init(currentItemID: current?.currentItemID, isDownloaded: current?.isDownloaded ?? false, isPlaying: current?.isPlaying, listenNowItems: ShelfPlayerKit.listenNowItems)
                 
-                WidgetCenter.shared.reloadTimelines(ofKind: "io.rfk.shelfPlayer.start")
-                WidgetCenter.shared.reloadTimelines(ofKind: "io.rfk.shelfPlayer.listenNow")
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.jadamburke.shelfPlayer.start")
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.jadamburke.shelfPlayer.listenNow")
             }
         }
         
@@ -292,8 +292,8 @@ private extension EmbassyManager {
             guard let itemID else {
                 Defaults[.playbackInfoWidgetValue] = await .init(currentItemID: nil, isDownloaded: false, isPlaying: nil, listenNowItems: ShelfPlayerKit.listenNowItems)
                 
-                WidgetCenter.shared.reloadTimelines(ofKind: "io.rfk.shelfPlayer.start")
-                WidgetCenter.shared.reloadTimelines(ofKind: "io.rfk.shelfPlayer.listenNow")
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.jadamburke.shelfPlayer.start")
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.jadamburke.shelfPlayer.listenNow")
                 
                 return
             }
@@ -313,8 +313,8 @@ private extension EmbassyManager {
     func updatePlaybackInfo(itemID: ItemIdentifier?, isDownloaded: Bool, isPlaying: Bool?) async {
         await Defaults[.playbackInfoWidgetValue] = .init(currentItemID: itemID, isDownloaded: isDownloaded, isPlaying: isPlaying, listenNowItems: ShelfPlayerKit.listenNowItems)
         
-        WidgetCenter.shared.reloadTimelines(ofKind: "io.rfk.shelfPlayer.start")
-        WidgetCenter.shared.reloadTimelines(ofKind: "io.rfk.shelfPlayer.listenNow")
+        WidgetCenter.shared.reloadTimelines(ofKind: "com.jadamburke.shelfPlayer.start")
+        WidgetCenter.shared.reloadTimelines(ofKind: "com.jadamburke.shelfPlayer.listenNow")
     }
     
     func updateSleepTimerLiveActivity(_ sleepTimer: SleepTimerConfiguration?) {

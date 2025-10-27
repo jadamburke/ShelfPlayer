@@ -11,7 +11,7 @@ import ShelfPlayerKit
 
 struct ListenNowWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "io.rfk.shelfPlayer.listenNow", provider: ListenNowWidgetProvider()) {
+        StaticConfiguration(kind: "com.jadamburke.shelfPlayer.listenNow", provider: ListenNowWidgetProvider()) {
             ListenNowWidgetContent(entry: $0)
         }
         .configurationDisplayName(Text("widget.listenNow"))

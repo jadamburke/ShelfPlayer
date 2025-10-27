@@ -10,7 +10,7 @@ import OSLog
 import ShelfPlayback
 
 struct DownloadButton: View {
-    fileprivate static let logger = Logger(subsystem: "io.rfk.shelfPlayer", category: "DownloadButton")
+    fileprivate static let logger = Logger(subsystem: "com.jadamburke.shelfPlayer", category: "DownloadButton")
     
     @Environment(Satellite.self) private var satellite
     

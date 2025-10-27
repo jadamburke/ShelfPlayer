@@ -15,7 +15,7 @@ private var tomorrowMidnight: Date {
 
 struct ListenedTodayWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "io.rfk.shelfPlayer.listenedToday", provider: ListenedTodayWidgetProvider()) {
+        StaticConfiguration(kind: "com.jadamburke.shelfPlayer.listenedToday", provider: ListenedTodayWidgetProvider()) {
             ListenedTodayWidgetContent(entry: $0)
         }
         .configurationDisplayName(Text("widget.listenedToday"))

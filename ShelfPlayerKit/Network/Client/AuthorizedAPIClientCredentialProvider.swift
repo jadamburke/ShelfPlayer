@@ -9,7 +9,7 @@ import Foundation
 import OSLog
 
 final actor AuthorizedAPIClientCredentialProvider: APICredentialProvider {
-    let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "AuthorizedAPIClientCredentialProvider")
+    let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "AuthorizedAPIClientCredentialProvider")
     
     let connectionID: ItemIdentifier.ConnectionID
     

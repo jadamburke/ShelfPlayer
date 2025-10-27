@@ -118,7 +118,7 @@ struct SeriesView: View {
         .onChange(of: viewModel.restrictToPersisted) {
             viewModel.lazyLoader.restrictToPersisted = viewModel.restrictToPersisted
         }
-        .userActivity("io.rfk.shelfplayer.item") { activity in
+        .userActivity("com.jadamburke.shelfplayer.item") { activity in
             activity.title = viewModel.series.name
             activity.isEligibleForHandoff = true
             activity.isEligibleForPrediction = true

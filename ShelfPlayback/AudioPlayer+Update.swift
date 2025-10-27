@@ -172,7 +172,7 @@ extension AudioPlayer {
 }
 
 public extension RFNotification.IsolatedNotification {
-    static var routeChanged: IsolatedNotification<AudioRoute> { .init("io.rfk.shelfPlayerKit.routeChanged") }
-    static var sleepTimerChanged: IsolatedNotification<SleepTimerConfiguration?> { .init("io.rfk.shelfPlayerKit.sleepTimerChanged") }
-    static var sleepTimerExpired: IsolatedNotification<SleepTimerConfiguration> { .init("io.rfk.shelfPlayerKit.sleepTimerExpired") }
+    static var routeChanged: IsolatedNotification<AudioRoute> { .init("com.jadamburke.shelfPlayerKit.routeChanged") }
+    static var sleepTimerChanged: IsolatedNotification<SleepTimerConfiguration?> { .init("com.jadamburke.shelfPlayerKit.sleepTimerChanged") }
+    static var sleepTimerExpired: IsolatedNotification<SleepTimerConfiguration> { .init("com.jadamburke.shelfPlayerKit.sleepTimerExpired") }
 }

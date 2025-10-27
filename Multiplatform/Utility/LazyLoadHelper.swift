@@ -88,7 +88,7 @@ final class LazyLoadHelper<T, O>: Sendable where T: Sendable & Equatable & Ident
     
     @MainActor
     init(filterLocally: Bool, filter: ItemFilter, restrictToPersisted: Bool, sortOrder: O, ascending: Bool, loadMore: @Sendable @escaping (_ page: Int, _ filter: ItemFilter, _ sortOrder: O, _ ascending: Bool, _ groupAudiobooksInSeries: Bool, _ library: Library) async throws -> ([T], Int)?) {
-        logger = .init(subsystem: "io.rfk.shelfPlayer", category: "LazyLoader")
+        logger = .init(subsystem: "com.jadamburke.shelfPlayer", category: "LazyLoader")
         
         self.filter = filter
         self.restrictToPersisted = restrictToPersisted

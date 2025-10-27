@@ -16,7 +16,7 @@
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)io.rfk.ShelfPlayer</string>
+		<string>$(AppIdentifierPrefix)com.jadamburke.ShelfPlayer</string>
 	</array>
 </dict>
 </plist>

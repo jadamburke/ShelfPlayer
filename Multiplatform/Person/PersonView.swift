@@ -191,7 +191,7 @@ struct PersonView: View {
             viewModel.seriesLoader?.restrictToPersisted = viewModel.restrictToPersisted
             viewModel.audiobooksLoader.restrictToPersisted = viewModel.restrictToPersisted
         }
-        .userActivity("io.rfk.shelfplayer.item") { activity in
+        .userActivity("com.jadamburke.shelfplayer.item") { activity in
             activity.title = viewModel.person.name
             activity.isEligibleForHandoff = true
             activity.isEligibleForPrediction = true

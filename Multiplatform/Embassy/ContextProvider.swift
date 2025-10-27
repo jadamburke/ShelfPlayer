@@ -11,7 +11,7 @@ import Intents
 import ShelfPlayback
 
 public struct ContextProvider {
-    static let logger = Logger(subsystem: "io.rfk.shelfPlayer", category: "ContextProvider")
+    static let logger = Logger(subsystem: "com.jadamburke.shelfPlayer", category: "ContextProvider")
     
     public static func updateUserContext() async {
         let libraries = await ShelfPlayerKit.libraries

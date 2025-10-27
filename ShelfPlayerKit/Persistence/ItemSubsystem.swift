@@ -14,7 +14,7 @@ import RFVisuals
 
 extension PersistenceManager {
     public final class ItemSubsystem: Sendable {
-        let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "ItemSubsystem")
+        let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "ItemSubsystem")
     }
 }
 

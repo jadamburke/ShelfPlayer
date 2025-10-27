@@ -4,8 +4,8 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>io.rfk.shelfPlayer.convenienceDownload</string>
-		<string>io.rfk.shelfPlayer.spotlightIndex</string>
+		<string>com.jadamburke.shelfPlayer.convenienceDownload</string>
+		<string>com.jadamburke.shelfPlayer.spotlightIndex</string>
 	</array>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
@@ -15,7 +15,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>None</string>
 			<key>CFBundleURLName</key>
-			<string>io.rfk.shelfplayer</string>
+			<string>com.jadamburke.shelfplayer</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>shelfplayer</string>
@@ -54,7 +54,7 @@
 	</dict>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>io.rfk.shelfPlayer.item</string>
+		<string>com.jadamburke.shelfPlayer.item</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -89,7 +89,7 @@
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>
-			<string>io.rfk.shelfPlayer.item</string>
+			<string>com.jadamburke.shelfPlayer.item</string>
 			<key>UTTypeTagSpecification</key>
 			<dict/>
 			<key>UTTypeConformsTo</key>

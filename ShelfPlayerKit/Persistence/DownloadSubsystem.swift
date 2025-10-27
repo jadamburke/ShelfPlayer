@@ -28,7 +28,7 @@ private let ACTIVE_TASK_LIMIT = 4
 extension PersistenceManager {
     @ModelActor
     public final actor DownloadSubsystem {
-        let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "Download")
+        let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "Download")
         
         var blocked = [ItemIdentifier: Int]()
         var busy = Set<ItemIdentifier>()
@@ -36,7 +36,7 @@ extension PersistenceManager {
         var updateTask: Task<Void, Never>?
         
         private lazy var urlSession: URLSession = {
-            let config = URLSessionConfiguration.background(withIdentifier: "io.rfk.shelfPlayerKit.download")
+            let config = URLSessionConfiguration.background(withIdentifier: "com.jadamburke.shelfPlayerKit.download")
             
             // config.isDiscretionary = !Defaults[.allowCellularDownloads]
             

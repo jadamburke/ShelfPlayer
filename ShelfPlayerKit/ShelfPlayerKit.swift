@@ -16,7 +16,7 @@ import AppIntents
 @_exported import RFNotifications
 
 public struct ShelfPlayerKit {
-    public static let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "ShelfPlayerKit")
+    public static let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "ShelfPlayerKit")
 }
 
 public struct ShelfPlayerKitPackage: AppIntentsPackage {}

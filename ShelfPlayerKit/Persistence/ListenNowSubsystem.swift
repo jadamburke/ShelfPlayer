@@ -11,7 +11,7 @@ import OSLog
 
 extension PersistenceManager {
     public final actor ListenNowSubsystem: Sendable {
-        let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "ListenNowSubsystem")
+        let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "ListenNowSubsystem")
         
         private var items = [PlayableItem]()
         

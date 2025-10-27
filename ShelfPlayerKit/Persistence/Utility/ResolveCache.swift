@@ -13,7 +13,7 @@ private let TTL_CLUSTER = "ttls"
 private let ITEM_TYPE_CLUSTER = "itemTypes"
 
 public actor ResolveCache: Sendable {
-    private let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "ResolveCache")
+    private let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "ResolveCache")
     
     private var unavailableItemIDs = [(ItemIdentifier.PrimaryID, ItemIdentifier.GroupingID?, ItemIdentifier.ConnectionID)]()
     private var resolvingItemIDs = [(ItemIdentifier.PrimaryID, ItemIdentifier.GroupingID?, ItemIdentifier.ConnectionID)]()

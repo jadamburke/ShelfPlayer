@@ -15,7 +15,7 @@ typealias PersistedBookmark = SchemaV2.PersistedBookmark
 extension PersistenceManager {
     @ModelActor
     public final actor BookmarkSubsystem {
-        let logger = Logger(subsystem: "io.rfk.shelfPlayerKit", category: "Bookmarks")
+        let logger = Logger(subsystem: "com.jadamburke.shelfPlayerKit", category: "Bookmarks")
         
         func bookmark(connectionID: ItemIdentifier.ConnectionID, primaryID: ItemIdentifier.PrimaryID, time: UInt64) throws -> PersistedBookmark? {
             try modelContext.fetch(FetchDescriptor<PersistedBookmark>(predicate: #Predicate {

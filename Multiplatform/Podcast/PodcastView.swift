@@ -96,7 +96,7 @@ struct PodcastView: View {
         .refreshable {
             viewModel.load(refresh: true)
         }
-        .userActivity("io.rfk.shelfPlayer.item") { activity in
+        .userActivity("com.jadamburke.shelfPlayer.item") { activity in
             activity.title = viewModel.podcast.name
             activity.isEligibleForHandoff = true
             activity.isEligibleForPrediction = true

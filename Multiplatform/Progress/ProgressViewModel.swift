@@ -11,7 +11,7 @@ import ShelfPlayback
 
 @MainActor @Observable
 final class ProgressViewModel {
-    let logger = Logger(subsystem: "io.rfk.shelfPlayer", category: "ProgressViewModel")
+    let logger = Logger(subsystem: "com.jadamburke.shelfPlayer", category: "ProgressViewModel")
     
     private(set) var importedConnectionIDs = Set<String>()
     private(set) var importFailedConnectionIDs = Set<String>()

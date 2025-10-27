@@ -14,7 +14,7 @@ import BackgroundTasks
 import ShelfPlayback
 
 struct ShelfPlayer {
-    static let logger = Logger(subsystem: "io.rfk.ShelfPlayer", category: "Hooks")
+    static let logger = Logger(subsystem: "com.jadamburke.ShelfPlayer", category: "Hooks")
     
     // MARK: Hooks
     
@@ -122,7 +122,7 @@ struct ShelfPlayer {
     
     static func generateLogArchive() throws -> URL {
         let store = try OSLogStore(scope: .currentProcessIdentifier)
-        let predicate = NSPredicate(format: "subsystem BEGINSWITH %@", "io.rfk.")
+        let predicate = NSPredicate(format: "subsystem BEGINSWITH %@", "com.jadamburke.")
         
         let all = try store.getEntries()
         let filtered = try store.getEntries(matching: predicate)

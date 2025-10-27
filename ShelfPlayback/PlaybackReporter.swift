@@ -15,7 +15,7 @@ import UIKit
 #endif
 
 final actor PlaybackReporter {
-    nonisolated let logger = Logger(subsystem: "io.rfk.shelfplayerKit", category: "PlaybackReporter")
+    nonisolated let logger = Logger(subsystem: "com.jadamburke.shelfplayerKit", category: "PlaybackReporter")
     
     private let itemID: ItemIdentifier
     

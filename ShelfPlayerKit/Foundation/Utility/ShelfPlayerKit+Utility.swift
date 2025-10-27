@@ -54,14 +54,15 @@ public extension ShelfPlayerKit {
         if ShelfPlayerKit.enableCentralized {
             FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupContainer)!.appending(path: "DownloadV2")
         } else {
-            URL.userDirectory.appending(path: "ShelfPlayer").appending(path: "DownloadV2")
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appending(path: "DownloadV2")
         }
     }
     static var cacheDirectoryURL: URL {
         if ShelfPlayerKit.enableCentralized {
             FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupContainer)!.appending(path: "Cache")
         } else {
-            URL.userDirectory.appending(path: "ShelfPlayer").appending(path: "Cache")
+            FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            //URL.userDirectory.appending(path: "ShelfPlayer").appending(path: "Cache")
         }
     }
     

@@ -10,7 +10,7 @@ import SwiftUI
 import ShelfPlayback
 
 struct ItemLoadView: View {
-    let logger = Logger(subsystem: "io.rfk.shelfPlayer", category: "ItemLoadView")
+    let logger = Logger(subsystem: "com.jadamburke.shelfPlayer", category: "ItemLoadView")
     
     @Environment(\.namespace) private var namespace
     

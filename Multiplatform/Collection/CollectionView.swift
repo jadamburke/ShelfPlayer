@@ -106,7 +106,7 @@ struct CollectionView: View {
             viewModel.refresh()
         }
         .modifier(PlaybackSafeAreaPaddingModifier())
-        .userActivity("io.rfk.shelfplayer.item") { activity in
+        .userActivity("com.jadamburke.shelfplayer.item") { activity in
             activity.title = viewModel.collection.name
             activity.isEligibleForHandoff = true
             activity.isEligibleForPrediction = true
